@@ -36,7 +36,7 @@ export const getFile = async (req, res) => {
       download: true,
       filename: fileData.name,
     });
-    console.log(fileUrl);
+
     return res.redirect(fileUrl);
   }
 

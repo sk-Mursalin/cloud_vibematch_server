@@ -79,6 +79,7 @@ export const renameDirectory = async (req, res, next) => {
 export const deleteDirectory = async (req, res, next) => {
   const { id } = req.params;
 
+
   try {
     const directoryData = await Directory.findOne({
       _id: id,
@@ -114,11 +115,14 @@ export const deleteDirectory = async (req, res, next) => {
       Key: `${_id}${extension}`,
     }));
 
-    console.log(keys);
+    if (keys.length === 0) {
+      await Directory.deleteOne({ _id: id });
+      return res.json({ message: "Files deleted successfully" });
+    }
 
     const response = await deleteS3Files(keys);
 
-    console.log(response);
+ 
 
     await File.deleteMany({
       _id: { $in: files.map(({ _id }) => _id) },

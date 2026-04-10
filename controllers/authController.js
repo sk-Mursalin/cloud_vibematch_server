@@ -16,9 +16,6 @@ export const sendOtp = async (req, res, next) => {
 export const verifyOtp = async (req, res, next) => {
   const { success, data } = otpSchema.safeParse(req.body);
 
-  console.log(req.body);
-  console.log(data);
-
   if (!success) {
     return res.status(400).json({ error: "Invalid OTP" });
   }
