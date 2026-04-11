@@ -3,22 +3,22 @@ import Subscription from "../models/subscriptionModel.js";
 import User from "../models/userModel.js";
 
 export const PLANS = {
-  plan_RSgkDvrWdUbK66: {
+  plan_Sad3I17gtXn9Wp: {
     storageQuotaBytes: 2 * 1024 ** 4,
   },
-  plan_RSgklpIChuY3bX: {
+  plan_Sad9EA5weax25d: {
     storageQuotaBytes: 2 * 1024 ** 4,
   },
-  plan_RSg7Nb0DeSPjRx: {
+  plan_Sad4YE1ot5kzZb: {
     storageQuotaBytes: 5 * 1024 ** 4,
   },
-  plan_RSg7YdOasAEtld: {
+  plan_SadA5Adrn3xmw4: {
     storageQuotaBytes: 5 * 1024 ** 4,
   },
-  plan_RSgl6SqCd64FWT: {
+  plan_Sad7MbJ80NTKh0: {
     storageQuotaBytes: 10 * 1024 ** 4,
   },
-  plan_RSglJD8xYAeNQJ: {
+  plan_SadAvA4VR0Z8gE: {
     storageQuotaBytes: 10 * 1024 ** 4,
   },
 };
@@ -32,7 +32,7 @@ export const handleRazorpayWebhook = async (req, res) => {
   );
   if (isSignatureValid) {
     console.log("Signature verified");
-    
+
     console.log(req.body);
     if (req.body.event === "subscription.activated") {
       const rzpSubscription = req.body.payload.subscription.entity;
